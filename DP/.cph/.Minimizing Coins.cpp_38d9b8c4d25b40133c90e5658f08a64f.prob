@@ -1,0 +1,1 @@
+{"name":"Local: Minimizing Coins","url":"d:\\Code\\CSES\\DP\\Minimizing Coins.cpp","tests":[{"id":1718744136589,"input":"3 11\n1 5 7","output":"3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Code\\CSES\\DP\\Minimizing Coins.cpp","group":"local","local":true}

@@ -97,4 +97,39 @@ const long double pi=3.141592653589793238462643383279502884197169399375105820974
 //     cout<<minDistance(s1,s2);
 // }
 
+// Initialize the DP table
+    vector<vector<int>> dp(5000 + 1, vector<int>(5000 + 1, 0));
+int minDistance(string w1, string w2) {
+    int n = w1.size();
+    int m = w2.size();
+    
+    
+    
+    // Base cases
+    for (int i = 0; i <= n; ++i) {
+        dp[i][0] = i; // Deleting all characters from w1 to match an empty w2
+    }
+    for (int j = 0; j <= m; ++j) {
+        dp[0][j] = j; // Inserting all characters to match w2 from an empty w1
+    }
+    
+    // Fill the DP table
+    for (int i = 1; i <= n; ++i) {
+        for (int j = 1; j <= m; ++j) {
+            if (w1[i - 1] == w2[j - 1]) {
+                dp[i][j] = dp[i - 1][j - 1]; // No operation needed
+            } else {
+                dp[i][j] = 1 + min({dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]}); // Min of delete, insert, replace
+            }
+        }
+    }
+    
+    return dp[n][m];
+}
 
+int main() {
+    string s1, s2;
+    cin >> s1 >> s2;
+    cout << minDistance(s1, s2);
+    return 0;
+}
